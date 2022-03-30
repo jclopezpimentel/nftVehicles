@@ -75,6 +75,7 @@ contract Vehicles{
         string memory op = '{"operation:"buy","date":"01/09/2019"}';
         Purchase memory p = Purchase(msg.sender,amount,op);
         purchases.push(p);
+    
     }
 
 }
