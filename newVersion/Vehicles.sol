@@ -77,41 +77,24 @@ contract Vehicles{
     }
 
     function getErrors(uint n) private pure returns (string memory){
-        string memory error1 = "{'Error':'Yes','number':'0', 'Code':'Vehicle has not been registered yet'}";
-        string memory error2 = "{'Error':'Yes','number':'1', 'Code':'n is out of the array limits'}";
-        string memory error100 = "{'Error':'Yes','number':'1000', 'Code':'unknown error'}";
-        string memory resultado;
-        if(n==0){
-            resultado = error1;
-        }else{
-            if(n==1){
-                resultado = error2;
-            }else{
-                resultado = error100;
-            }
+        string[3] memory errors=["{'Error':'Yes','number':'0', 'Code':'Vehicle has not been registered yet'}",
+                                 "{'Error':'Yes','number':'1', 'Code':'n is out of the array limits'}",
+                                 "{'Error':'Yes','number':'1000', 'Code':'unknown error'}"];
+        if(n>=errors.length){
+            n = 2;
         }
-        return resultado;
-    }
-
-    function getErrors2(uint n) public pure returns (string memory){
-        string[] memory errors;
-        errors[0] = "{'Error':'Yes','number':'0', 'Code':'Vehicle has not been registered yet'}";
-        errors[1] = "{'Error':'Yes','number':'1', 'Code':'n is out of the array limits'}";
-        errors[2] = "{'Error':'Yes','number':'1000', 'Code':'unknown error'}";
-        string memory resultado;
-        if(n<errors.length){
-            resultado = errors[n];
-        }else{
-            resultado = errors[2];
-        }
-        return resultado; 
+        return errors[n]; 
     }
 
     function getInfo(uint n) view private returns(string memory){
         uint index = listInfo.length;
         string memory regreso="";
         if(n>=index){
-            regreso = getErrors(1);
+            if(index==0){
+                regreso = getErrors(0);    
+            }else{
+                regreso = getErrors(1);
+            }
         }else{
             index=n;
             string memory error = "'Error':'Not'";                
@@ -123,8 +106,6 @@ contract Vehicles{
         }
         return regreso;
     }
-
-
      
     function getLastInfo(address vehicle) view public returns(string memory){
         require(address(this)==vehicle); //The token must be the correct one to obtain info
@@ -137,7 +118,7 @@ contract Vehicles{
         return regreso;
     }
 
-    function getNumberOfRegisters(address vehicle) view public returns(uint){
+    function getNumOfRegisters(address vehicle) view public returns(uint){
         require(address(this)==vehicle); //The token must be the correct one to obtain info
         return listInfo.length;
     }
