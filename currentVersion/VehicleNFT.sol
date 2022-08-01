@@ -324,10 +324,10 @@ function reportEndLifeCycle(uint256 _tokenId, string memory _description) overri
 
   /**
     * @notice When implemented this function must be included modifier onlyHelper
-    * @dev This function sets insurance details 
+    * @dev This function sets insurance details. 
     * @param _tokenId is an identifier for the token, it could be the NIV.
-    * @param _mileage miles traveled when the services is carried out    
-    * @param _description it is a brief description of the service
+    * @param _mileage miles traveled when the services is carried out.    
+    * @param _description it is a brief description of the service.
   */
   function setInsuranceDetails(uint256 _tokenId, uint256 _mileage, string memory _description) 
     override external onlyHelper{
