@@ -1,0 +1,7 @@
+# ignore all logs
+*.log
+
+# ignore files within folder
+currentVersion/artifacts/
+.deps/
+.git/
