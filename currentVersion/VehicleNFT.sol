@@ -303,7 +303,7 @@ function reportEndLifeCycle(uint256 _tokenId, string memory _description) overri
     * @dev This function sets a description on the service carried out 
     * @param _tokenId is an identifier for the token, it could be the NIV.    
     * @param _mileage miles traveled when the services is carried out
-    * @param _description it is a brief description of the service
+    * @param _description it is a brief description of the service.
   */
   function setMaintenanceService(uint256 _tokenId, uint256 _mileage, string memory _description) 
     override external onlyHelper{
